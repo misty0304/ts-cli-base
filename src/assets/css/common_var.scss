@@ -1,0 +1,93 @@
+$base-font-size: 75;
+
+@function pxToRem($px) {
+  @return $px / $base-font-size * 1rem;
+}
+
+/*-----------------颜色颜色定义-----------------*/
+// 基本颜色定义
+$color-4250C3: #4250c3; // 主题色（可变）
+$color-09A7AF: #09a7af; // 主题色激活（可变）
+$color-2BC812: #2bc812; // 选择与成功
+$color-FF9C09: #ff9c09; // 通知提醒
+$color-FC8D29: #fc8d29; // 通知提醒激活
+$color-F25643: #f25643; // 警示与错误
+$color-C03625: #c03625; // 警示与错误激活
+$color-707070: #707070; // 次要内容
+$color-656667: #656667; // 次要激活
+
+$color-E4E4E4: #e4e4e4; // 下划线与边框线
+$color-F4F4F4: #f4f4f4; // 页面背景
+$color-FBFBFB: #fbfbfb; // 表格、列表、树组件元素鼠标悬浮时背景色
+$color-AEAEAE: #aeaeae; // 弱化显示内容（用于提示行文字、组件icon默认色，组件输入内容提示文字）
+$color-D6D6D6: #d6d6d6;
+$color-2B2F32: #2b2f32; // 导航栏与底部栏背景
+
+$color-FFFFFF: #ffffff; // 白色
+$color-F8F8F8: #f8f8f8;
+$color-9CA2A6: #9ca2a6;
+$color-121D1E: #121d1e;
+$color-B1B1B1: #b1b1b1;
+$color-EAEAEA: #eaeaea;
+$color-000000: #000000; // 黑色
+$color-F5F6FA: #f5f6fa;
+$color-9aa2a4: #9aa2a4;
+$color-808080: #808080;
+$color-FF9C09: #ff9c09;
+$color-FBFBFB: #fbfbfb;
+
+// 语义化颜色定义
+$color-default: $color-4250C3; // 默认主题颜色
+$color-default-active: $color-09A7AF;
+$color-primary: $color-4250C3; // 确认
+$color-primary-active: $color-09A7AF;
+$color-success: $color-2BC812; // 成功
+$color-success-active: $color-2BC812;
+$color-warning: $color-FF9C09; // 警告
+$color-warning-active: $color-FC8D29;
+$color-error: $color-F25643; // 错误、警示
+$color-error-active: $color-C03625;
+$color-info: $color-707070; // 次要内容
+$color-info-active: $color-656667;
+
+$color-form-title: $color-707070; // 表单字体颜色：项目标题颜色
+$color-form-tips: $color-AEAEAE; // 表单字体颜色：输入框/选择框提示文字、icon颜色
+$color-form-content: $color-000000; // 表单字体颜色：输入框/选择框输入/选择内容文字颜色
+
+$color-tips: $color-AEAEAE; // 弱化显示内容（用于提示行文字）
+$color-border: $color-EAEAEA; // 下划线与边框线（特殊下划线与边框线颜色自行定义）
+$color-bg-page: $color-F4F4F4; // 页面背景色（特殊背景色自行定义）
+$color-bg-win: rgba($color-2B2F32, 0.24); // 弹窗透明遮罩层颜色
+$color-bg-modal: rgba($color-2B2F32, 0.72); // 弹窗透明背景颜色
+$color-bg-win-none: rgba($color-2B2F32, 0); // 弹窗透明遮罩层颜色
+$color-bg-hover: $color-FBFBFB; // 白色背景鼠标悬浮时背景色（特殊背景色自行定义）
+
+/*-----------------边距-----------------*/
+// 左右边距
+$default-padding: 8px; // 左右边距
+$padding-large: 18px; // 上下边距
+$padding-middle: 10px; // 上下边距
+$padding-small: 5px; // 上下边距
+$padding-mini: 2px; // 上下边距
+/*-----------------边框-----------------*/
+// 默认边框
+$border: 1px solid $color-border;
+// input组件聚焦或者被选中时边框
+$border-active: 1px solid $color-default;
+// input组件输入内容有误时边框
+$border-error: 1px solid rgba($color-error, 0.3);
+
+/*-----------------圆角-----------------*/
+$border-radius-default: 4px;
+$border-radius-8: 8px;
+
+/*-----------------元素高度-----------------*/
+$height-large: 56px;
+$height-middle: 40px;
+$height-small: 30px;
+$height-mini: 24px;
+
+/*-----------------字体大小-----------------*/
+$font-default: 14px;
+$font-default-mini: 12px;
+$font-default-icon: 16px;

@@ -1,0 +1,168 @@
+@import './common_var';
+@import './common_mixin';
+
+/*-----------------共通-----------------*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.m-hidden {
+  overflow: hidden;
+}
+.m-h-auto {
+  height: auto;
+}
+// 圆角
+.m-border-radius-default {
+  border-radius: $border-radius-default;
+}
+.m-border-radius-8 {
+  border-radius: 8px;
+}
+
+// <a>标签样式
+.m-a {
+  text-decoration: none;
+  color: $color-default;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-default;
+    position: relative;
+    &:after {
+      content: '';
+      width: 100%;
+      height: 0px;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      border-bottom: $border-active;
+    }
+  }
+}
+
+// 元素/文字水平对齐方式
+$align-list: (left, center, right);
+@each $var in $align-list {
+  .m-#{$var} {
+    text-align: $var;
+  }
+}
+// 换行
+// 强制换行
+.m-newline {
+  word-break: break-all;
+}
+// 自动换行
+.m-newline-auto {
+  word-wrap: break-word;
+  word-break: normal;
+}
+// 强制不换行
+.m-newline-none {
+  white-space: nowrap;
+}
+
+// 文字粗体设置
+.m-bold {
+  font-weight: bold;
+}
+.m-bold-none {
+  font-weight: normal;
+}
+
+// 鼠标样式
+.m-pointer {
+  cursor: pointer;
+}
+.m-not-allowed {
+  cursor: not-allowed;
+}
+
+// 提示文字样式(默认)
+.m-tips {
+  font-size: 12px;
+  color: $color-tips;
+}
+// 提示文字样式(错误)
+.m-tips-error {
+  font-size: 12px;
+  color: $color-error;
+}
+
+// 元素disabled
+.m-disabled {
+  @include disabled;
+}
+
+.m-inline-block {
+  display: inline-block;
+}
+
+.m-relative {
+  position: relative;
+}
+
+.m-absolute {
+  position: absolute;
+}
+
+/* 单行多余文字省略 */
+.ellipsis-l1 {
+  max-height: 96px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+}
+/* 两行，多余文字省略 */
+.ellipsis-l2 {
+  max-height: 40px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+}
+
+/* 三行，多余文字省略 */
+.ellipsis-l3 {
+  max-height: 60px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+}
+
+.m-boxsizing-content {
+  box-sizing: content-box;
+}
+/* 签到标题样式 */
+.signin-title {
+  height: 24px;
+  font-size: 20px;
+  font-weight: bold;
+  color: $color-default;
+  position: relative;
+  padding-left: 16px;
+  padding-bottom: 0;
+  margin-bottom: 24px;
+  &::before {
+    position: absolute;
+    content: '';
+    width: 0px;
+    height: 100%;
+    border-left: 3px solid #09bdc6;
+    left: 0;
+    top: 0;
+  }
+}

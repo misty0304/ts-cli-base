@@ -1,0 +1,191 @@
+/* 弹性盒子 */
+.m-fb {
+  @include m-fb;
+}
+/* 行内弹性盒子 */
+.m-fb-line {
+  @include m-fb-line;
+}
+
+/* 弹性盒子主轴方向设置 */
+/* 弹性盒子主轴方向：横向(左->右排列) */
+.m-fb-row {
+  @include m-fb-row;
+}
+/* 弹性盒子主轴方向：横向(右->左排列) */
+.m-fb-row-rev {
+  @include m-fb-row-rev;
+}
+/* 弹性盒子主轴方向：纵向(上->下排列) */
+.m-fb-col {
+  @include m-fb;
+  @include m-fb-col;
+}
+/* 弹性盒子主轴方向：纵向(下->上排列) */
+.m-fb-col-rev {
+  @include m-fb;
+  @include m-fb-col-rev;
+}
+
+/* 弹性盒子溢出换行方式设置 */
+/* 溢出不换行(默认值) */
+.m-fb-nowrap {
+  @include m-fb-wrap-type(nowrap);
+}
+/* 溢出换行 */
+.m-fb-wrap {
+  @include m-fb-wrap-type(wrap);
+}
+/* 溢出换行(反转 wrap 排列) */
+.m-fb-wrap-rev {
+  @include m-fb-wrap-type(wrap-reverse);
+}
+
+/* 主轴对齐方式设置 */
+/* 沿主轴方向头部对齐 */
+.m-fb-main-start {
+  @include m-fb-main-justify-content(flex-start);
+}
+/* 沿主轴方向中间对齐 */
+.m-fb-main-center {
+  @include m-fb-main-justify-content(center);
+}
+/* 沿主轴方向尾部对齐 */
+.m-fb-main-end {
+  @include m-fb-main-justify-content(flex-end);
+}
+/* 沿主轴方向两端对齐，项目之间的间隔都相等 */
+.m-fb-main-between {
+  @include m-fb-main-justify-content(space-between);
+}
+/* 沿主轴方向平均分布 */
+.m-fb-main-around {
+  @include m-fb-main-justify-content(space-around);
+}
+
+/* 交叉轴(侧轴)对齐方式设置 */
+/* 沿侧轴方向头部对齐 */
+.m-fb-cross-start {
+  @include m-fb-cross-align-items(flex-start);
+}
+/* 沿侧轴方向中间对齐 */
+.m-fb-cross-center {
+  @include m-fb-cross-align-items(center);
+}
+/* 沿侧轴方向尾部对齐 */
+.m-fb-cross-end {
+  @include m-fb-cross-align-items(flex-end);
+}
+/* 沿侧轴方向按每个子元素的第一行文字的基线对齐（仅主轴为横向或者行内弹性盒子时才有效） */
+.m-fb-cross-baseline {
+  @include m-fb-cross-align-items(baseline);
+}
+/* 如盒子内元素未指定侧轴方向尺寸或者设为auto，则侧轴方向充满整个盒子 */
+.m-fb-cross-stretch {
+  @include m-fb-cross-align-items(stretch);
+}
+
+/* 项目排列顺序order。数值越小，排列越靠前，默认为0 */
+@for $i from 0 through 5 {
+  .m-item-order-#{$i} {
+    @include m-item-order($i);
+  }
+}
+
+/* 项目放大比例 flex-grow。默认0(不放大)，放大比例按flex容器除内容外剩余空间的比例计算 */
+@for $i from 0 through 5 {
+  .m-item-grow-#{$i} {
+    @include m-item-grow($i);
+  }
+}
+
+/* 项目的缩小比例 flex-shrink.缩小：默认1（如果空间不足则会缩小，值为0不缩小)*/
+@for $i from 0 through 5 {
+  .m-item-shrink-#{$i} {
+    @include m-item-shrink($i);
+  }
+}
+
+/* flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间 */
+@for $i from 0 through 5 {
+  .m-item-basis-#{$i} {
+    @include m-item-basis($i);
+  }
+  .m-item-basis-p-#{$i} {
+    @include m-item-basis-p($i);
+  }
+}
+
+/* 盒子内子元素空间分配flex。是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto */
+@for $i from 0 through 5 {
+  .m-item-flex-#{$i} {
+    @include m-item-flex($i);
+  }
+}
+
+/* 侧轴对齐方式设置(单个项目)
+      可覆盖align-items属性。
+      默认值为auto，表示继承父元素的align-items属性，
+      如果没有父元素，则等同于stretch
+*/
+.m-item-self-start {
+  @include m-item-self(flex-start);
+}
+.m-item-self-center {
+  @include m-item-self(center);
+}
+.m-item-self-end {
+  @include m-item-self(flex-end);
+}
+.m-item-self-baseline {
+  @include m-item-self(baseline);
+}
+.m-item-self-stretch {
+  @include m-item-self(stretch);
+}
+
+/* 主轴/侧轴整合样式 */
+$justifyContent: (
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'between': space-between,
+  'around': space-around
+);
+
+$alignItems: (
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'baseline': baseline,
+  'stretch': stretch
+);
+
+@each $justifyName, $justifyVal in $justifyContent {
+  @each $alignName, $alignVal in $alignItems {
+    .m-fb-#{$justifyName}-#{$alignName} {
+      @include m-fb;
+      @include m-fb-row;
+      @include m-fb-main-justify-content($justifyVal);
+      @include m-fb-cross-align-items($alignVal);
+    }
+    .m-fb-rev-#{$justifyName}-#{$alignName} {
+      @include m-fb;
+      @include m-fb-row-rev;
+      @include m-fb-main-justify-content($justifyVal);
+      @include m-fb-cross-align-items($alignVal);
+    }
+    .m-fb-col-#{$justifyName}-#{$alignName} {
+      @include m-fb;
+      @include m-fb-col;
+      @include m-fb-main-justify-content($justifyVal);
+      @include m-fb-cross-align-items($alignVal);
+    }
+    .m-fb-col-rev-#{$justifyName}-#{$alignName} {
+      @include m-fb;
+      @include m-fb-col-rev;
+      @include m-fb-main-justify-content($justifyVal);
+      @include m-fb-cross-align-items($alignVal);
+    }
+  }
+}

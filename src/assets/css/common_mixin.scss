@@ -1,0 +1,221 @@
+@mixin border-box {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+// 文本溢出省略号
+@mixin text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+// 文本无法选中
+@mixin user-select-none {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -moz-user-select: none; /*火狐*/
+  -webkit-user-select: none; /*webkit浏览器*/
+  -ms-user-select: none; /*IE10*/
+  user-select: none;
+}
+// 定位居中
+@mixin position-center($position_type: fixed, $byTransform: false) {
+  position: $position_type;
+  @if $byTransform {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else {
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+// 不可使用、点击、输入时样式
+@mixin disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+// 链接样式
+@mixin link($color) {
+  text-decoration: none;
+  color: $color;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-default;
+    position: relative;
+    &:after {
+      content: '';
+      width: 100%;
+      height: 0px;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      border-bottom: $border-active;
+    }
+  }
+}
+/*
+*********************************************************
+  弹性盒子相关
+*********************************************************
+*/
+/* 弹性盒子 */
+@mixin m-fb {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: -webkit-flex;
+  display: flex;
+}
+/* 行内弹性盒子 */
+@mixin m-fb-line {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+/* 弹性盒子主轴方向：横向(左->右排列) */
+@mixin m-fb-row {
+  flex-direction: row;
+  -webkit-box-direction: normal; /*老语法*/
+  -webkit-box-orient: horizontal; /*老语法*/
+  -webkit-flex-direction: row;
+}
+/* 弹性盒子主轴方向：横向(右->左排列) */
+@mixin m-fb-row-rev {
+  flex-direction: row-reverse;
+  /* box-direction只是改变了子元素的排序，并没有改变对齐方式，需要新增一个 box-pack 来改变对齐方式*/
+  -webkit-box-pack: end; /*老语法*/
+  box-pack: end; /*老语法*/
+  -webkit-box-direction: reverse; /*老语法*/
+  box-direction: reverse; /*老语法*/
+  -webkit-box-orient: horizontal; /*老语法*/
+  box-orient: horizontal; /*老语法*/
+  -webkit-flex-direction: row-reverse;
+}
+/* 弹性盒子主轴方向：纵向(上->下排列) */
+@mixin m-fb-col {
+  flex-direction: column;
+  -webkit-box-direction: normal; /*老语法*/
+  box-direction: normal; /*老语法*/
+  -webkit-box-orient: vertical; /*老语法*/
+  box-orient: vertical; /*老语法*/
+  -webkit-flex-direction: column;
+}
+/* 弹性盒子主轴方向：纵向(下->上排列) */
+@mixin m-fb-col-rev {
+  flex-direction: column-reverse;
+  /* box-direction只是改变了子元素的排序，并没有改变对齐方式，需要新增一个 box-pack 来改变对齐方式*/
+  -webkit-box-pack: end; /*老语法*/
+  -webkit-box-direction: reverse; /*老语法*/
+  -webkit-box-orient: vertical; /*老语法*/
+  -webkit-flex-direction: column-reverse;
+}
+
+/* 弹性盒子子元素换行方式flex-wrap */
+/* 溢出不换行(默认值) */
+@mixin m-fb-wrap-type($type: nowrap) {
+  flex-wrap: $type;
+  -webkit-flex-wrap: $type;
+}
+
+/* 3、主轴对齐方式justify-content*/
+@mixin m-fb-main-justify-content($justifyContent: flex-start) {
+  -webkit-box-pack: $justifyContent; /*老语法*/
+  -webkit-justify-content: $justifyContent;
+  justify-content: $justifyContent;
+}
+
+// 快捷
+@mixin m-fb-main-start {
+  justify-content: flex-start;
+}
+@mixin m-fb-main-center {
+  justify-content: center;
+}
+@mixin m-fb-main-end {
+  justify-content: flex-end;
+}
+@mixin m-fb-main-between {
+  justify-content: space-between;
+}
+@mixin m-fb-main-around {
+  justify-content: space-around;
+}
+
+/* 交叉轴(侧轴)对齐方式align-items */
+@mixin m-fb-cross-align-items($alignItems: flex-start) {
+  -webkit-box-align: $alignItems; /*老语法*/
+  box-align: $alignItems; /*老语法*/
+  -webkit-align-items: $alignItems;
+  align-items: $alignItems;
+}
+//快捷
+@mixin m-fb-cross-start {
+  align-items: flex-start;
+}
+@mixin m-fb-cross-center {
+  align-items: center;
+}
+@mixin m-fb-cross-end {
+  align-items: flex-end;
+}
+@mixin m-fb-cross-baseline {
+  align-items: baseline;
+}
+@mixin m-fb-cross-stretch {
+  align-items: stretch;
+}
+/* 项目排列顺序order。数值越小，排列越靠前，默认为0 */
+@mixin m-item-order($order: 0) {
+  -webkit-box-ordinal-group: $order;
+  -webkit-order: $order;
+  order: $order;
+}
+
+/*项目放大比例 flex-grow。默认0(不放大)，放大比例按flex容器除内容外剩余空间的比例计算
+*/
+@mixin m-item-grow($grow: 0) {
+  -webkit-box-flex: $grow;
+  -webkit-flex-grow: $grow;
+  flex-grow: $grow;
+}
+
+/* 项目的缩小比例 flex-shrink.缩小：默认1（如果空间不足则会缩小，值为0不缩小)*/
+@mixin m-item-shrink($shrink: 0) {
+  -webkit-box-flex: $shrink;
+  -webkit-flex-shrink: $shrink;
+  flex-shrink: $shrink;
+}
+
+/* flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间 */
+@mixin m-item-basis($basis: 0) {
+  flex-basis: #{$basis}px;
+}
+@mixin m-item-basis-p($basis: 0) {
+  flex-basis: #{$basis}#{'%'};
+}
+
+/* 盒子内子元素空间分配flex。是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto */
+@mixin m-item-flex($flex: 0) {
+  /* display: block; */
+  -webkit-box-flex: $flex;
+  box-flex: $flex;
+  -webkit-flex: $flex;
+  flex: $flex;
+}
+/* align-self 属性允许单个项目有与其他项目在侧轴上不一样的对齐方式。
+      可覆盖align-items属性。
+      默认值为auto，表示继承父元素的align-items属性，
+      如果没有父元素，则等同于stretch
+*/
+@mixin m-item-self($type: flex-start) {
+  -webkit-align-self: $type;
+  align-self: $type;
+}

@@ -1,0 +1,22 @@
+{
+  "eslintIntegration": true,
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "disableLanguages": [],
+  "endOfLine": "auto",
+  "htmlWhitespaceSensitivity": "strict",
+  "ignorePath": ".prettierignore",
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+  "printWidth": 120,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "requireConfig": false,
+  "semi": false,
+  "singleQuote": true,
+  "stylelintIntegration": false,
+  "tabWidth": 2,
+  "useTabs": false,
+  "trailingComma": "none",
+  "tslintIntegration": false
+}

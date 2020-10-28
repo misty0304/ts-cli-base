@@ -1,0 +1,63 @@
+// 常用颜色定义
+// 使用：m-c-xxxx  ex：m-c-default
+$color-list: (
+  'default': $color-default,
+  'default-active': $color-default-active,
+  // 'primary': $color-primary,
+    // 'primary-active': $color-primary-active,
+    'success': $color-success,
+  'success-active': $color-success-active,
+  'warning': $color-warning,
+  'warning-active': $color-warning-active,
+  'error': $color-error,
+  'error-active': $color-error-active,
+  'info': $color-info,
+  'info-active': $color-info-active,
+  'form-title': $color-form-title,
+  'form-tips': $color-form-tips,
+  'form-content': $color-form-content,
+  'tips': $color-tips,
+  'border': $color-border,
+  'FFFFFF': $color-FFFFFF,
+  '121D1E': $color-121D1E,
+  'B1B1B1': $color-B1B1B1,
+  '000000': $color-000000,
+  '9aa2a4': $color-9aa2a4,
+  'FF9C09': $color-FF9C09
+);
+@each $name, $val in $color-list {
+  .m-c-#{$name} {
+    color: $val !important;
+  }
+}
+
+// 常用背景色定义
+// 使用：m-bg-xxxx  ex：m-bg-default
+$bg-color-list: (
+  'default': $color-default,
+  'default-active': $color-default-active,
+  // 'primary': $color-primary,
+    // 'primary-active': $color-primary-active,
+    'success': $color-success,
+  'success-active': $color-success-active,
+  'warning': $color-warning,
+  'warning-active': $color-warning-active,
+  'error': $color-error,
+  'error-active': $color-error-active,
+  'info': $color-info,
+  'info-active': $color-info-active,
+  'bg-page': $color-bg-page,
+  'bg-win': $color-bg-win,
+  'bg-win-none': $color-bg-win-none,
+  'bg-hover': $color-bg-hover,
+  'FFFFFF': $color-FFFFFF,
+  '121D1E': $color-121D1E,
+  'EAEAEA': $color-EAEAEA,
+  '000000': $color-000000,
+  'FBFBFB': $color-FBFBFB
+);
+@each $name, $val in $bg-color-list {
+  .m-bg-#{$name} {
+    background-color: $val;
+  }
+}
