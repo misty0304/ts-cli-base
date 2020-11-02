@@ -1,6 +1,7 @@
 {
-  "name": "hbk2",
-  "version": "0.1.0",
+  "name": "ts-cli",
+  "version": "1.0.0",
+  "description": "ts+Vue-cli2.0脚手架,如有疑问请联系",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --mode local --inline --progress --hot",
